@@ -25,16 +25,17 @@ export default async function OgImage() {
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          background: "#ff5f05",
-          color: "#171512",
+          background: "#13294b",
+          color: "#eef1f5",
           fontFamily: "Geist",
         }}
       >
         <div
           style={{
             display: "flex",
-            background: "#ccff00",
-            borderBottom: "6px solid #171512",
+            background: "#ff5f05",
+            color: "#0b1a30",
+            borderBottom: "6px solid #0b1a30",
             // 62 not 64: Geist Mono's B has a 2px side-bearing
             padding: "14px 64px 14px 62px",
             fontFamily: "Geist Mono",
@@ -50,8 +51,9 @@ export default async function OgImage() {
             <div
               style={{
                 display: "flex",
-                background: "#171512",
-                color: "#f3eddf",
+                background: "#0b1a30",
+                color: "#eef1f5",
+                boxShadow: "6px 6px 0 #ff5f05",
                 padding: "10px 18px",
                 fontFamily: "Geist Mono",
                 fontSize: 26,
@@ -64,9 +66,9 @@ export default async function OgImage() {
               <div
                 style={{
                   display: "flex",
-                  background: "#ccff00",
-                  color: "#171512",
-                  border: "3px solid #171512",
+                  background: "#ff5f05",
+                  color: "#0b1a30",
+                  border: "3px solid #0b1a30",
                   padding: "7px 16px",
                   fontFamily: "Geist Mono",
                   fontSize: 26,
@@ -92,7 +94,7 @@ export default async function OgImage() {
           >
             <span>BUILT WITH</span>
             {/* REPLIT's L→I pulled together like the site headline (Geist side-bearing at 150px) */}
-            <div style={{ display: "flex", color: "#f3eddf", textShadow: "8px 8px 0 #171512" }}>
+            <div style={{ display: "flex", color: "#ff5f05", textShadow: "8px 8px 0 #0b1a30" }}>
               <span>REP</span>
               <span style={{ marginRight: -6 }}>L</span>
               <span>IT</span>
