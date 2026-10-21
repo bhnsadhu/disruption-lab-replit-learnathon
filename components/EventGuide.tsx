@@ -33,7 +33,7 @@ const STEPS = [
 ] as const;
 
 export function EventGuide() {
-  const { itinerary, prizes, food } = event;
+  const { itinerary, prizes, food, faq, links } = event;
 
   return (
     <section className="guide" id="guide" aria-label="Event guide">
@@ -135,6 +135,25 @@ export function EventGuide() {
               <p>There will be food. Menu coming soon.</p>
             </>
           )}
+        </article>
+
+        <article className="guideCard faqCard">
+          <span className="infoLabel">FAQ</span>
+          <dl className="faqList">
+            {faq.map((item) => (
+              <div key={item.q}>
+                <dt>{item.q}</dt>
+                <dd>{item.a}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="faqMore">
+            Still have questions? DM{" "}
+            <a href={links.instagram} target="_blank" rel="noreferrer">
+              {links.instagramHandle}
+            </a>{" "}
+            on Instagram.
+          </p>
         </article>
       </div>
     </section>

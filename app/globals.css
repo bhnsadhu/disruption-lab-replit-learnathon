@@ -1057,6 +1057,44 @@ a.creator:hover {
   display: block;
 }
 
+.faqCard {
+  grid-column: 1 / -1;
+}
+
+.faqList {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 36px;
+  margin: 4px 0 0;
+  display: grid;
+}
+
+.faqList dt {
+  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.faqList dd {
+  color: #514c42;
+  margin: 0;
+  font: 14px/1.45 monospace;
+}
+
+.faqMore {
+  border-top: 1px dashed #17151240;
+  padding-top: 14px;
+}
+
+.faqMore a {
+  color: var(--blue);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.faqMore a:hover {
+  text-decoration: underline;
+}
+
 /* ---------- 404 ---------- */
 
 .notFound {
@@ -1082,19 +1120,35 @@ footer {
   display: flex;
 }
 
-footer div {
+footer > div:first-child {
   align-items: center;
   gap: 14px;
   display: flex;
 }
 
-footer div b {
+.footerMid {
+  flex-direction: column;
+  gap: 16px;
+  display: flex;
+}
+
+.socials {
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  display: flex;
+}
+
+footer .socials a {
+  border-bottom-color: var(--orange);
+}
+
+footer > div:first-child b {
   color: var(--acid);
   font-size: 72px;
   line-height: 0.8;
 }
 
-footer div span {
+footer > div:first-child span {
   max-width: 80px;
   font: 900 12px monospace;
 }
@@ -1134,7 +1188,8 @@ footer a {
   }
 
   .steps,
-  .infoGrid {
+  .infoGrid,
+  .faqList {
     grid-template-columns: 1fr;
   }
 

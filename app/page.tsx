@@ -88,11 +88,24 @@ export default function Home() {
           <b>{live ? count : event.dateStamp}</b>
           <span>{live ? "LIVE BUILDS" : "BUILD DAY"}</span>
         </div>
-        <p>
-          Shipped from the CIF steps at the {event.name}, {event.school}
-          <br />
-          <strong>Powered by curiosity + Replit.</strong>
-        </p>
+        <div className="footerMid">
+          <p>
+            Shipped from the CIF steps at the {event.name}, {event.school}
+            <br />
+            <strong>Powered by curiosity + Replit.</strong>
+          </p>
+          <nav className="socials" aria-label="Disruption Lab links">
+            <a href={event.links.instagram} target="_blank" rel="noreferrer">
+              INSTAGRAM ↗
+            </a>
+            <a href={event.links.linkedin} target="_blank" rel="noreferrer">
+              LINKEDIN ↗
+            </a>
+            <a href={event.links.website} target="_blank" rel="noreferrer">
+              DISRUPTION LAB ↗
+            </a>
+          </nav>
+        </div>
         <a href="#">BACK TO TOP ↑</a>
       </footer>
     </main>

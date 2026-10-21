@@ -6,9 +6,9 @@ export function BrandLockup() {
     <div className="brandLockup">
       <small>PRESENTED BY</small>
       <div className="brandRow">
-        <span className="brandChip">
+        <a className="brandChip" href={event.links.website} target="_blank" rel="noreferrer">
           <span className="brandWord">{event.host}</span>
-        </span>
+        </a>
         <span className="brandX" aria-hidden="true">
           ×
         </span>

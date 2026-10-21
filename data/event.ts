@@ -23,6 +23,36 @@ export const event = {
     "https://www.google.com/maps/search/?api=1&query=Campus+Instructional+Facility+University+of+Illinois+Urbana-Champaign",
   replitUrl: "https://replit.com",
 
+  /** Disruption Lab contact links (footer, FAQ, brand chip). */
+  links: {
+    website: "https://giesgroups.illinois.edu/disruptionlab/home/",
+    instagram: "https://www.instagram.com/uiuc_disruption",
+    instagramHandle: "@uiuc_disruption",
+    linkedin: "https://www.linkedin.com/company/disruption-lab-at-gies/",
+  },
+
+  faq: [
+    {
+      q: "Do I need coding experience?",
+      a: "Nope. That's the whole point. You'll learn by building with Replit, from idea to live app.",
+    },
+    { q: "What should I bring?", a: "A laptop and a charger." },
+    {
+      q: "Do I need a Replit account?",
+      a: "Yes. Make a free one at replit.com before you show up so you can start building right away.",
+    },
+    { q: "Does it cost anything?", a: "No. It's free." },
+    { q: "Who can come?", a: "UIUC only." },
+    {
+      q: "How do I sign up?",
+      a: "Fill out the pre-event form (step 02 above). It's required to attend.",
+    },
+    {
+      q: "How does my project get on the wall?",
+      a: "Publish your app on Replit, then submit the post-event form (step 03).",
+    },
+  ],
+
   /** Google Form links. null = shows "opens soon". */
   forms: {
     /** Anyone curious. */
