@@ -48,7 +48,7 @@ export default function Home() {
           <p className="heroCopy">
             {live ? `${count} experiments. ${count} live builds.` : "One afternoon. Zero experience needed."}
             <br />
-            One gloriously overclocked wall of ideas.
+            One gloriously chaotic wall of ideas.
           </p>
           <Terminal builds={count} />
           <div className="ctaRow">
