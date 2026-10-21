@@ -1,0 +1,23 @@
+export type Creator = {
+  name: string;
+  linkedin?: string;
+  /** Path under /public, e.g. "/avatars/jane-doe.jpg" */
+  avatar?: string;
+};
+
+export type Project = {
+  slug: string;
+  title: string;
+  description: string;
+  url: string;
+  /** Path under /public, e.g. "/project-shots/my-app.png" */
+  screenshot?: string;
+  creator: Creator;
+  /** Must match a prize name in data/event.ts to get a ribbon + sort to the top */
+  award?: string;
+};
+
+export type Prize = {
+  name: string;
+  reward?: string;
+};
