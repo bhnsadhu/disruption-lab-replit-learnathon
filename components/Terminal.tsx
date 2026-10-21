@@ -3,9 +3,8 @@
 import { useEffect, useState } from "react";
 import { event } from "@/data/event";
 
-// Nov 7 2026 is after DST ends, so Champaign is on CST (UTC-6)
-const START = Date.parse(`${event.date}T12:00:00-06:00`);
-const END = Date.parse(`${event.date}T14:45:00-06:00`);
+const START = Date.parse(event.start);
+const END = Date.parse(event.end);
 
 const pad = (n: number) => String(n).padStart(2, "0");
 

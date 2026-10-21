@@ -1,4 +1,5 @@
 import { event } from "@/data/event";
+import { googleCalendarUrl, icsPath } from "@/lib/calendar";
 import { projects } from "@/lib/projects";
 
 const STEPS = [
@@ -87,6 +88,14 @@ export function EventGuide() {
               </p>
             </>
           )}
+          <div className="calRow">
+            <a className="calBtn" href={googleCalendarUrl} target="_blank" rel="noreferrer">
+              + GOOGLE CALENDAR
+            </a>
+            <a className="calBtn" href={icsPath} download>
+              + APPLE / OUTLOOK
+            </a>
+          </div>
         </article>
 
         <article className="guideCard">

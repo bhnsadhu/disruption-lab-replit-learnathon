@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { event, signupForm } from "@/data/event";
+import { googleCalendarUrl, icsPath } from "@/lib/calendar";
 import { ReplitMark } from "./ReplitMark";
 
 export function EventPromo() {
@@ -35,6 +36,15 @@ export function EventPromo() {
             <dd>
               {event.location}
               <small>{event.locationDetail}</small>
+            </dd>
+            <dt>SAVE IT</dt>
+            <dd className="calLinks">
+              <a href={googleCalendarUrl} target="_blank" rel="noreferrer">
+                + Google Calendar
+              </a>
+              <a href={icsPath} download>
+                + Apple / Outlook
+              </a>
             </dd>
             <dt>FOOD</dt>
             <dd>{event.food ?? "To be announced"}</dd>

@@ -10,6 +10,9 @@ export const event = {
   host: `Disruption Lab @ ${school}`,
   school,
   date: "2026-11-07",
+  /** Champaign is on CST (UTC-6) by Nov 7. Used by the countdown and calendar links. */
+  start: "2026-11-07T12:00:00-06:00",
+  end: "2026-11-07T14:45:00-06:00",
   dateLabel: "Saturday, Nov 7, 2026",
   dateShort: "NOV 2026",
   dateStamp: "11.07",
