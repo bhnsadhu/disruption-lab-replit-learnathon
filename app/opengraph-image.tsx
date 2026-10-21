@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import { projects } from "@/lib/projects";
 
@@ -5,8 +7,14 @@ export const alt = "Built with Replit — Disruption Lab × Replit Learnathon at
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OgImage() {
+const FONTS = path.join(process.cwd(), "node_modules/geist/dist/fonts");
+
+export default async function OgImage() {
   const count = projects.length;
+  const [black, mono] = await Promise.all([
+    readFile(path.join(FONTS, "geist-sans/Geist-Black.ttf")),
+    readFile(path.join(FONTS, "geist-mono/GeistMono-Bold.ttf")),
+  ]);
 
   return new ImageResponse(
     (
@@ -18,7 +26,7 @@ export default function OgImage() {
           flexDirection: "column",
           background: "#ff5f05",
           color: "#171512",
-          fontFamily: "sans-serif",
+          fontFamily: "Geist",
         }}
       >
         <div
@@ -27,12 +35,13 @@ export default function OgImage() {
             background: "#ccff00",
             borderBottom: "6px solid #171512",
             padding: "14px 48px",
+            fontFamily: "Geist Mono",
             fontSize: 24,
-            fontWeight: 900,
+            fontWeight: 700,
             letterSpacing: 2,
           }}
         >
-          BUILT TO LEARN // BUILT TO SHARE // BUILT WITH REPLIT // BUILT AT UIUC
+          BUILT TO LEARN // BUILT TO SHARE // BUILT AT UIUC
         </div>
         <div style={{ display: "flex", flexDirection: "column", padding: "48px 64px", flex: 1 }}>
           <div
@@ -42,8 +51,9 @@ export default function OgImage() {
               background: "#171512",
               color: "#f3eddf",
               padding: "10px 18px",
+              fontFamily: "Geist Mono",
               fontSize: 26,
-              fontWeight: 900,
+              fontWeight: 700,
             }}
           >
             DISRUPTION LAB × REPLIT LEARNATHON
@@ -68,6 +78,12 @@ export default function OgImage() {
         </div>
       </div>
     ),
-    size,
+    {
+      ...size,
+      fonts: [
+        { name: "Geist", data: black, weight: 900, style: "normal" },
+        { name: "Geist Mono", data: mono, weight: 700, style: "normal" },
+      ],
+    },
   );
 }
