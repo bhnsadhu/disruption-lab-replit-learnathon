@@ -443,15 +443,10 @@ h1 {
   line-height: 0.78;
 }
 
-h1 .accent {
+h1 span {
   color: var(--paper);
-  /* drop-shadow (not text-shadow) so the fused letters don't get shadow seams between them */
-  filter: drop-shadow(5px 5px 0 var(--ink));
+  text-shadow: 5px 5px 0 var(--ink);
   display: block;
-}
-
-h1 .fuse {
-  letter-spacing: -0.15em;
 }
 
 .heroCopy {
@@ -1393,7 +1388,7 @@ footer a {
     animation-delay: 0.25s;
   }
 
-  h1 .accent {
+  h1 span {
     animation: 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.45s both slideIn;
   }
 
