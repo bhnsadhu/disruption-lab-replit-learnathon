@@ -213,7 +213,8 @@ main {
 }
 
 .eventPromo:hover .eventSticker,
-.eventPromo:focus-within .eventSticker {
+.eventPromo:focus-within .eventSticker,
+.eventPromo.open .eventSticker {
   background: var(--paper);
   transform: rotate(2deg) translate(-18px);
 }
@@ -238,7 +239,8 @@ main {
 }
 
 .eventPromo:hover .eventPopover,
-.eventPromo:focus-within .eventPopover {
+.eventPromo:focus-within .eventPopover,
+.eventPromo.open .eventPopover {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
