@@ -107,7 +107,7 @@ export default function Home() {
               DISRUPTION LAB ↗
             </a>
             <a href={event.links.repo} target="_blank" rel="noreferrer">
-              SOURCE CODE ↗
+              REPOSITORY ↗
             </a>
           </nav>
         </div>
