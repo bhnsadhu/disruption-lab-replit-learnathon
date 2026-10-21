@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import { event } from "@/data/event";
 import { projects } from "@/lib/projects";
 import "./globals.css";
@@ -6,13 +7,22 @@ import "./globals.css";
 const SITE = event.siteUrl;
 const live = projects.length > 0;
 
+// Headline font, same one the link-preview image uses
+const display = localFont({
+  src: "../node_modules/geist/dist/fonts/geist-sans/Geist-Black.woff2",
+  weight: "900",
+  variable: "--font-display",
+  display: "swap",
+});
+
 // Before the event the link gets texted around to hype it; after, it shows off the builds.
+// Shared text uses | as the separator (no dashes).
 const title = live
-  ? `Built with Replit — ${projects.length} builds from the ${event.school} Learnathon`
-  : `${event.name} · Nov 7 @ ${event.school}`;
+  ? `Built with Replit | ${projects.length} builds from the ${event.school} Learnathon`
+  : `${event.name} | Nov 7 @ ${event.school}`;
 const description = live
   ? `${projects.length} live apps built at the ${event.name} at ${event.school}. Click through and try them.`
-  : `Free build day, no coding experience needed. Sat Nov 7, ${event.time} on the ${event.location}. Every app built lands on the wall.`;
+  : `Free build day, no coding experience needed | Sat Nov 7, 12 to 2:45 PM | ${event.location} | Every app built lands on the wall.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -31,7 +41,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={display.variable}>
       <body className="antialiased">{children}</body>
     </html>
   );

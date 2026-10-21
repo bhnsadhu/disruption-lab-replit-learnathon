@@ -4,7 +4,7 @@ import { ImageResponse } from "next/og";
 import { event } from "@/data/event";
 import { projects } from "@/lib/projects";
 
-export const alt = `Built with Replit — Disruption Lab × Replit Learnathon at ${event.school}`;
+export const alt = `Built with Replit | Disruption Lab × Replit Learnathon at ${event.school}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -42,7 +42,7 @@ export default async function OgImage() {
             letterSpacing: 2,
           }}
         >
-          BUILT TO LEARN // BUILT TO SHARE // BUILT WITH REPLIT
+          BUILT TO LEARN | BUILT TO SHARE | BUILT WITH REPLIT
         </div>
         <div style={{ display: "flex", flexDirection: "column", padding: "48px 64px", flex: 1 }}>
           <div style={{ display: "flex", gap: 16 }}>
@@ -72,7 +72,7 @@ export default async function OgImage() {
                   fontWeight: 700,
                 }}
               >
-                FREE · NO EXPERIENCE NEEDED
+                FREE | NO EXPERIENCE NEEDED
               </div>
             )}
           </div>
@@ -92,8 +92,8 @@ export default async function OgImage() {
           </div>
           <div style={{ display: "flex", marginTop: "auto", fontSize: 32, fontWeight: 800 }}>
             {count > 0
-              ? `${count} live builds · ${event.school} · Nov 2026`
-              : `Build day · Nov 7 2026 · CIF Monumental Steps, ${event.school}`}
+              ? `${count} live builds | ${event.school} | Nov 2026`
+              : `Build day | Nov 7 2026 | CIF Monumental Steps, ${event.school}`}
           </div>
         </div>
       </div>

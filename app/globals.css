@@ -434,18 +434,20 @@ main {
 /* ---------- headline ---------- */
 
 h1 {
-  letter-spacing: -0.09em;
+  /* matches the link-preview image */
+  font-family: var(--font-display), Arial, Helvetica, sans-serif;
+  letter-spacing: -0.065em;
   text-transform: uppercase;
   max-width: 1050px;
   margin: 34px 0 14px;
   font-size: clamp(72px, 13vw, 184px);
-  font-weight: 950;
-  line-height: 0.78;
+  font-weight: 900;
+  line-height: 0.85;
 }
 
 h1 span {
   color: var(--paper);
-  text-shadow: 5px 5px 0 var(--ink);
+  text-shadow: 0.045em 0.045em 0 var(--ink);
   display: block;
 }
 
