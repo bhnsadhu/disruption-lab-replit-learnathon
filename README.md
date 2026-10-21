@@ -67,9 +67,6 @@ If someone resubmits, re-run the import. The latest row per project title wins, 
 
 Winners get a 🏆 ribbon and move to the top of the wall.
 
-## Logo
-
-Drop the Disruption Lab logo in `public/brand/` and set `disruptionLabLogo` in `data/event.ts` (e.g. `"/brand/disruption-lab.svg"`). A light or white logo works best, since it sits on a dark chip.
 
 ## Editing by hand
 

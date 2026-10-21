@@ -19,8 +19,6 @@ export const event = {
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Campus+Instructional+Facility+University+of+Illinois+Urbana-Champaign",
   replitUrl: "https://replit.com",
-  /** Disruption Lab logo, e.g. "/brand/disruption-lab.svg". null shows a text wordmark. */
-  disruptionLabLogo: null as string | null,
 
   /** Google Form links. null = shows "opens soon". */
   forms: {

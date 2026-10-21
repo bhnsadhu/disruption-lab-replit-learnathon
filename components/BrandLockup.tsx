@@ -7,11 +7,7 @@ export function BrandLockup() {
       <small>PRESENTED BY</small>
       <div className="brandRow">
         <span className="brandChip">
-          {event.disruptionLabLogo ? (
-            <img src={event.disruptionLabLogo} alt={event.host} />
-          ) : (
-            <span className="brandWord">{event.host}</span>
-          )}
+          <span className="brandWord">{event.host}</span>
         </span>
         <span className="brandX" aria-hidden="true">
           ×
