@@ -3,7 +3,7 @@ import type { Prize } from "@/lib/types";
 export const event = {
   name: "Disruption Lab × Replit Learnathon",
   shortName: "UIUC Learnathon",
-  host: "Disruption Lab",
+  host: "Disruption Lab @ UIUC",
   school: "UIUC",
   date: "2026-11-07",
   dateLabel: "Saturday, Nov 7, 2026",

@@ -10,10 +10,7 @@ export function BrandLockup() {
           {event.disruptionLabLogo ? (
             <img src={event.disruptionLabLogo} alt={event.host} />
           ) : (
-            <span className="brandWord">
-              {event.host}
-              <sup>{event.school}</sup>
-            </span>
+            <span className="brandWord">{event.host}</span>
           )}
         </span>
         <span className="brandX" aria-hidden="true">
