@@ -15,6 +15,15 @@ const display = localFont({
   display: "swap",
 });
 
+// Body/terminal font. The system `monospace` centers narrow glyphs like "i" in their cell,
+// so wrapped lines starting with one sit visibly off the left edge; Geist Mono's slab "i" doesn't.
+const mono = localFont({
+  src: "../node_modules/geist/dist/fonts/geist-mono/GeistMono-Variable.woff2",
+  weight: "100 900",
+  variable: "--font-mono",
+  display: "swap",
+});
+
 // Before the event the link gets texted around to hype it; after, it shows off the builds.
 // Shared text uses | as the separator (no dashes).
 const title = live
@@ -41,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={display.variable}>
+    <html lang="en" className={`${display.variable} ${mono.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   );
