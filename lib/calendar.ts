@@ -1,6 +1,6 @@
 import { event } from "@/data/event";
 
-const SITE = "https://learnathon.bhanusadhu.com";
+const SITE = event.siteUrl;
 
 /** "2026-11-07T12:00:00-06:00" → "20261107T180000Z" */
 const utcStamp = (iso: string) =>
@@ -49,7 +49,7 @@ export const icsFile = [
   "CALSCALE:GREGORIAN",
   "METHOD:PUBLISH",
   "BEGIN:VEVENT",
-  `UID:learnathon-${event.date}@learnathon.bhanusadhu.com`,
+  `UID:learnathon-${event.date}@${new URL(SITE).host}`,
   "DTSTAMP:20261021T000000Z",
   `DTSTART:${utcStamp(event.start)}`,
   `DTEND:${utcStamp(event.end)}`,
