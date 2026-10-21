@@ -54,6 +54,7 @@ main {
 }
 
 .ticker span {
+  flex: none;
   min-width: 760px;
   padding-right: 0.6em;
   animation: 22s linear infinite marquee;
@@ -234,7 +235,7 @@ main {
   display: grid;
   position: absolute;
   top: 55px;
-  right: 36px;
+  right: 56px;
   transform: translateY(-8px) rotate(-1deg);
 }
 

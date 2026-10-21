@@ -53,7 +53,7 @@ export default function Home() {
           <p>PROJECT DIRECTORY</p>
           <span>
             {live
-              ? `${count} BUILDS${winners ? ` · ${winners} WINNERS` : ""} // ${event.dateShort}`
+              ? `${count} BUILDS${winners ? ` · ${winners} WINNER${winners === 1 ? "" : "S"}` : ""} // ${event.dateShort}`
               : "WALL OPENS // NOV 7 2026"}
           </span>
         </div>
