@@ -34,10 +34,10 @@ export default function Home() {
           </a>
         </div>
         <EventPromo />
-        {/* .il / .li close Geist's side-bearings so I+L and L+I touch (see globals.css) */}
+        {/* .li closes Geist's side-bearing so REPLIT's L+I touch (see globals.css) */}
         <h1 aria-label="Built with Replit">
           <span aria-hidden="true" className="h1Line">
-            Bu<span className="il">i</span>lt with
+            Built with
           </span>
           <span aria-hidden="true" className="accent">
             Rep<span className="li">l</span>it

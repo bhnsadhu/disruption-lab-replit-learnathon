@@ -90,12 +90,8 @@ export default async function OgImage() {
               marginLeft: -9,
             }}
           >
-            {/* I→L and L→I pulled together like the site headline (Geist side-bearings at 150px) */}
-            <div style={{ display: "flex" }}>
-              <span>BU</span>
-              <span style={{ marginRight: -11 }}>I</span>
-              <span>LT WITH</span>
-            </div>
+            <span>BUILT WITH</span>
+            {/* REPLIT's L→I pulled together like the site headline (Geist side-bearing at 150px) */}
             <div style={{ display: "flex", color: "#f3eddf", textShadow: "8px 8px 0 #171512" }}>
               <span>REP</span>
               <span style={{ marginRight: -6 }}>L</span>

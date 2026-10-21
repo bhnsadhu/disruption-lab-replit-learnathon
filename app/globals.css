@@ -450,12 +450,8 @@ h1 .h1Line {
   display: block;
 }
 
-/* Geist side-bearings leave 0.124em between I→L and 0.090em between L→I.
-   With the h1's -0.065em that's still a gap, so close it plus ~1px overlap. */
-h1 .il {
-  letter-spacing: -0.129em;
-}
-
+/* Geist's side-bearings leave 0.090em between L→I. With the h1's -0.065em that
+   still shows a seam in REPLIT, so close it plus ~1px overlap. */
 h1 .li {
   letter-spacing: -0.095em;
 }
