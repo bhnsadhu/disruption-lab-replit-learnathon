@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { event } from "@/data/event";
+import { event, signupForm } from "@/data/event";
 import { ReplitMark } from "./ReplitMark";
 
 export function EventPromo() {
@@ -17,7 +17,10 @@ export function EventPromo() {
         aria-expanded={open}
         onClick={() => setOpen((o) => !o)}
       >
-        {"{ build day: nov 7 }"}
+        <span>{"{ build day: nov 7 }"}</span>
+        <small>
+          <i aria-hidden="true">▾</i> {open ? "CLICK TO CLOSE" : "CLICK FOR DETAILS"}
+        </small>
       </button>
       <div className="eventPopover" role="dialog" aria-label={`${event.name} details`}>
         <div className="eventInfo">
@@ -33,6 +36,8 @@ export function EventPromo() {
               {event.location}
               <small>{event.locationDetail}</small>
             </dd>
+            <dt>FOOD</dt>
+            <dd>{event.food ?? "To be announced"}</dd>
             <dt>PRIZES</dt>
             <dd>
               {prizes.length === 0
@@ -46,10 +51,17 @@ export function EventPromo() {
             </dd>
           </dl>
           <span className="eventActions">
-            <a href={event.mapsUrl} target="_blank" rel="noreferrer">
+            {signupForm && (
+              <a href={signupForm} target="_blank" rel="noreferrer">
+                {event.forms.pre ? "REGISTER ↗" : "I'M INTERESTED ↗"}
+              </a>
+            )}
+            <a className="secondary" href="#guide" onClick={() => setOpen(false)}>
+              FULL GUIDE ↓
+            </a>
+            <a className="secondary" href={event.mapsUrl} target="_blank" rel="noreferrer">
               GET DIRECTIONS ↗
             </a>
-            <span>🏆 Winners get flagged right here on the wall.</span>
           </span>
         </div>
         <span className="eventArt" aria-hidden="true">

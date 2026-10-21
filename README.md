@@ -12,7 +12,22 @@ npm install
 npm run dev      # http://localhost:3000
 ```
 
-## Google Form
+## Event details (forms, itinerary, food, prizes)
+
+Everything lives in `data/event.ts`. Leave a value empty or `null` and the site shows "TBA" or "opens soon".
+
+| Setting | What it does |
+| --- | --- |
+| `forms.interest` | Interest form. Hero button + step 01. Live now. |
+| `forms.pre` | Pre-event form (required to attend). Once set, it becomes the main hero button and step 02 goes live. |
+| `forms.post` | Post-event form (required to get on the wall). Step 03 goes live and the empty wall slots link to it. |
+| `itinerary` | Schedule rows, e.g. `{ time: "12:00 PM", title: "Kickoff", detail: "Intro to Replit Agent" }` |
+| `food` | e.g. `"Pizza + drinks"` |
+| `prizes` | Prize names (+ optional `reward`). Shows in the guide and the event popover. |
+
+## Post-event form
+
+This is the form the importer reads.
 
 Make the form with these questions (wording can vary; the importer matches on keywords):
 

@@ -1,11 +1,13 @@
 import { BrandLockup } from "@/components/BrandLockup";
 import { EventPromo } from "@/components/EventPromo";
+import { EventGuide } from "@/components/EventGuide";
 import { ProjectCard, SlotCard } from "@/components/ProjectCard";
-import { event } from "@/data/event";
+import { Terminal } from "@/components/Terminal";
+import { event, signupForm } from "@/data/event";
 import { projects } from "@/lib/projects";
 
 const TICKER =
-  `BUILT TO LEARN ✦ BUILT TO SHARE ✦ BUILT WITH REPLIT ✦ BUILT AT ${event.school.toUpperCase()} ✦ DISRUPTION LAB × REPLIT ✦ `;
+  `BUILT TO LEARN ✦ BUILT TO SHARE ✦ BUILT WITH REPLIT ✦ BUILT AT ${event.school.toUpperCase()} ✦ SHIPPED FROM THE CIF STEPS ✦ DISRUPTION LAB × REPLIT ✦ `;
 
 const EMPTY_SLOTS = 6;
 
@@ -36,17 +38,27 @@ export default function Home() {
         <p className="heroCopy">
           {live
             ? `${count} experiments. ${count} live builds. One gloriously overclocked wall of ideas.`
-            : "Every build from Nov 7 lands here. One gloriously overclocked wall of ideas, loading."}
+            : "One afternoon on the CIF steps. Idea to deployed app. Every build lands on this wall."}
         </p>
-        <div className="terminalLine">
-          <b>~/uiuc/learnathon</b>
-          <span>$ ship imagination --to=internet</span>
-          <em>▮</em>
+        <Terminal builds={count} />
+        <div className="ctaRow">
+          {signupForm && (
+            <a className="cta" href={signupForm} target="_blank" rel="noreferrer">
+              <span>I&apos;M IN</span>
+              {event.forms.pre ? "REGISTER (REQUIRED TO ATTEND)" : "FILL OUT THE INTEREST FORM"}
+              <b>↗</b>
+            </a>
+          )}
+          <a className="ctaGhost" href="#guide">
+            EVENT GUIDE ↓
+          </a>
         </div>
         <a className="jump" href="#projects">
           ENTER THE WALL <span>↓</span>
         </a>
       </section>
+
+      <EventGuide />
 
       <section className="wall" id="projects" aria-label="Learnathon project showcase">
         <div className="wallHeader">
@@ -60,7 +72,14 @@ export default function Home() {
         <div className="grid">
           {live
             ? projects.map((p, i) => <ProjectCard key={p.slug} project={p} index={i} />)
-            : Array.from({ length: EMPTY_SLOTS }, (_, i) => <SlotCard key={i} index={i} />)}
+            : Array.from({ length: EMPTY_SLOTS }, (_, i) => (
+                <SlotCard
+                  key={i}
+                  index={i}
+                  href={event.forms.post ?? signupForm}
+                  label={event.forms.post ? "SUBMIT YOUR BUILD ↗" : "SAVE YOUR SPOT ↗"}
+                />
+              ))}
         </div>
       </section>
 
@@ -70,7 +89,7 @@ export default function Home() {
           <span>{live ? "LIVE BUILDS" : "BUILD DAY"}</span>
         </div>
         <p>
-          Made at the {event.name}, {event.school}
+          Shipped from the CIF steps at the {event.name}, {event.school}
           <br />
           <strong>Powered by curiosity + Replit.</strong>
         </p>

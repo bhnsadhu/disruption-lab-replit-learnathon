@@ -65,13 +65,17 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
   );
 }
 
-export function SlotCard({ index }: { index: number }) {
-  return (
-    <article
-      className="card slot"
-      style={{ "--tilt": tiltFor(index) } as React.CSSProperties}
-      aria-label="Empty project slot"
-    >
+export function SlotCard({
+  index,
+  href,
+  label,
+}: {
+  index: number;
+  href?: string | null;
+  label: string;
+}) {
+  const body = (
+    <>
       <div className="screen">
         <div className="slotScreen" aria-hidden="true">
           <span>
@@ -86,11 +90,34 @@ export function SlotCard({ index }: { index: number }) {
       <div className="cardBody">
         <h2>Your build here</h2>
         <p>This slot is reserved. Ship something on Nov 7 and it lands on the wall.</p>
+        {href && <span className="launch">{label}</span>}
       </div>
       <div className="creator">
         <span>?</span>
         you, probably
       </div>
+    </>
+  );
+
+  return (
+    <article
+      className="card slot"
+      style={{ "--tilt": tiltFor(index) } as React.CSSProperties}
+      aria-label="Empty project slot"
+    >
+      {href ? (
+        <a
+          className="projectLink"
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={label.replace(" ↗", "")}
+        >
+          {body}
+        </a>
+      ) : (
+        body
+      )}
     </article>
   );
 }

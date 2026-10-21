@@ -38,6 +38,8 @@ body:before {
 main {
   min-height: 100vh;
   overflow: hidden;
+  /* clip, unlike hidden, can't be scrolled sideways when the off-edge sticker gets focus */
+  overflow: clip;
 }
 
 /* ---------- ticker ---------- */
@@ -207,16 +209,62 @@ main {
   background: var(--acid);
   cursor: pointer;
   border: 2px solid;
-  padding: 12px 55px;
+  box-shadow: 5px 5px 0 var(--ink);
+  padding: 10px 55px 9px;
   font: 700 15px monospace;
+  text-align: left;
   transition: all 0.18s;
   display: block;
   transform: rotate(8deg);
+  animation: 4s ease-in-out 1.5s infinite nudge;
+}
+
+.eventSticker > span {
+  display: block;
+}
+
+.eventSticker small {
+  background: var(--ink);
+  color: var(--acid);
+  letter-spacing: 0.1em;
+  margin-top: 6px;
+  padding: 4px 8px;
+  font: 900 11px monospace;
+  display: inline-block;
+}
+
+.eventSticker small i {
+  font-style: normal;
+  transition: transform 0.18s;
+  display: inline-block;
+}
+
+.eventPromo.open .eventSticker small i {
+  transform: rotate(180deg);
+}
+
+/* periodic wiggle so it reads as clickable */
+@keyframes nudge {
+  0%,
+  82%,
+  100% {
+    transform: rotate(8deg);
+  }
+  86% {
+    transform: rotate(5deg) translate(-6px);
+  }
+  90% {
+    transform: rotate(11deg) translate(-6px);
+  }
+  94% {
+    transform: rotate(6deg) translate(-3px);
+  }
 }
 
 .eventPromo:hover .eventSticker,
 .eventPromo:focus-within .eventSticker,
 .eventPromo.open .eventSticker {
+  animation: none;
   background: var(--paper);
   transform: rotate(2deg) translate(-18px);
 }
@@ -298,25 +346,27 @@ main {
 }
 
 .eventActions {
+  flex-wrap: wrap;
   align-items: stretch;
   gap: 10px;
   margin-top: auto;
   display: flex;
 }
 
-.eventActions a,
-.eventActions span {
+.eventActions a {
+  background: var(--acid);
   border: 2px solid var(--ink);
   place-items: center;
-  padding: 10px 14px;
-  font: 800 11px monospace;
+  padding: 11px 16px;
+  font: 900 12px monospace;
   text-decoration: none;
+  transition: all 0.18s;
   display: grid;
 }
 
-.eventActions a {
-  background: var(--acid);
-  transition: all 0.18s;
+.eventActions a.secondary {
+  background: var(--paper);
+  font-weight: 800;
 }
 
 .eventActions a:hover,
@@ -324,11 +374,6 @@ main {
   background: var(--ink);
   color: var(--acid);
   outline: none;
-}
-
-.eventActions span {
-  background: var(--paper);
-  text-align: left;
 }
 
 .eventArt {
@@ -396,9 +441,15 @@ h1 span {
   width: min(720px, 100%);
   box-shadow: 8px 8px 0 var(--blue);
   border: 2px solid;
-  gap: 14px;
+  flex-direction: column;
+  gap: 6px;
   padding: 14px 18px;
   font: 14px/1.4 monospace;
+  display: flex;
+}
+
+.terminalLine > div {
+  gap: 14px;
   display: flex;
 }
 
@@ -409,6 +460,63 @@ h1 span {
 .terminalLine em {
   color: var(--orange);
   animation: 0.8s steps(2, end) infinite blink;
+}
+
+.ctaRow {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 26px;
+  margin-top: 30px;
+  display: flex;
+}
+
+.ctaGhost {
+  color: var(--ink);
+  border-bottom: 3px solid var(--ink);
+  padding-bottom: 4px;
+  font: 900 13px monospace;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+.ctaGhost:hover {
+  border-color: var(--paper);
+}
+
+.cta {
+  background: var(--acid);
+  color: var(--ink);
+  letter-spacing: 0.06em;
+  box-shadow: 8px 8px 0 var(--ink);
+  border: 3px solid var(--ink);
+  align-self: flex-start;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  font: 900 14px monospace;
+  text-decoration: none;
+  transition: all 0.18s;
+  display: flex;
+}
+
+.cta span {
+  white-space: nowrap;
+  flex: none;
+  background: var(--ink);
+  color: var(--acid);
+  padding: 4px 8px;
+}
+
+.cta b {
+  color: var(--orange);
+  font-size: 18px;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  box-shadow: 12px 12px 0 var(--blue);
+  outline: none;
+  transform: translate(-3px, -3px);
 }
 
 .jump {
@@ -702,6 +810,14 @@ a.creator:hover {
   animation: 0.8s steps(2, end) infinite blink;
 }
 
+.card.slot .launch {
+  color: var(--orange);
+}
+
+.card.slot:hover .launch {
+  color: var(--blue);
+}
+
 .card.slot h2 {
   color: #17151266;
 }
@@ -714,6 +830,195 @@ a.creator:hover {
 
 .card.slot .creator span {
   background: #1715122e;
+}
+
+/* ---------- event guide (Illini blue) ---------- */
+
+.guide {
+  background-color: var(--navy);
+  background-image: linear-gradient(#ffffff0d 1px, #0000 1px),
+    linear-gradient(90deg, #ffffff0d 1px, #0000 1px);
+  background-size: 28px 28px;
+  border-bottom: 4px solid var(--ink);
+  padding: 64px max(5vw, 24px) 80px;
+}
+
+.guide .wallHeader {
+  background: var(--orange);
+}
+
+.steps,
+.infoGrid {
+  gap: 42px 28px;
+  display: grid;
+}
+
+.steps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.infoGrid {
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
+  margin-top: 42px;
+}
+
+.guideCard {
+  background: #fffdf6;
+  border: 3px solid var(--ink);
+  box-shadow: 9px 9px 0 var(--ink);
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px 20px;
+  display: flex;
+  position: relative;
+}
+
+.guideCard h3 {
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 950;
+  line-height: 0.95;
+}
+
+.guideCard p {
+  color: #514c42;
+  margin: 0;
+  font: 14px/1.45 monospace;
+}
+
+.stepNum {
+  color: var(--orange);
+  text-shadow: 3px 3px 0 var(--ink);
+  letter-spacing: -0.06em;
+  font-size: 64px;
+  font-weight: 950;
+  line-height: 0.8;
+}
+
+.stepTag {
+  background: var(--acid);
+  border: 2px solid var(--ink);
+  letter-spacing: 0.08em;
+  align-self: flex-start;
+  padding: 5px 8px;
+  font: 900 10px monospace;
+}
+
+.stepTag.req {
+  background: var(--orange);
+}
+
+.stepBtn {
+  background: var(--acid);
+  color: var(--ink);
+  text-align: center;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  margin-top: auto;
+  padding: 12px;
+  font: 900 12px monospace;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: all 0.18s;
+}
+
+.stepBtn:hover,
+.stepBtn:focus-visible {
+  background: var(--ink);
+  color: var(--acid);
+  box-shadow: 6px 6px 0 var(--blue);
+  outline: none;
+  transform: translate(-2px, -2px);
+}
+
+.stepBtn.off {
+  color: #8a857a;
+  box-shadow: none;
+  background: none;
+  border-style: dashed;
+  transform: none;
+}
+
+.infoLabel {
+  color: var(--navy);
+  letter-spacing: 0.12em;
+  font: 900 12px monospace;
+}
+
+.infoLabel:before {
+  content: "■ ";
+  color: var(--orange);
+}
+
+.tba {
+  color: var(--orange);
+  text-shadow: 3px 3px 0 var(--ink);
+  letter-spacing: -0.04em;
+  font-size: 64px;
+  font-weight: 950;
+  line-height: 0.85;
+}
+
+.foodLine {
+  font-size: 18px !important;
+  font-weight: 800;
+}
+
+.itinList,
+.prizeList {
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.itinList li {
+  border-bottom: 1px dashed #17151240;
+  grid-template-columns: 92px 1fr;
+  gap: 12px;
+  padding-bottom: 10px;
+  font: 14px/1.4 monospace;
+  display: grid;
+}
+
+.itinList b {
+  color: var(--orange);
+}
+
+.itinList small,
+.prizeList small {
+  color: #6b655a;
+  display: block;
+}
+
+.prizeList li {
+  border-bottom: 1px dashed #17151240;
+  padding-bottom: 10px;
+  font: 14px/1.4 monospace;
+}
+
+.prizeList a {
+  color: var(--blue);
+  margin-top: 4px;
+  font-weight: 900;
+  text-decoration: none;
+  display: block;
+}
+
+/* ---------- 404 ---------- */
+
+.notFound {
+  background: var(--orange);
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 40px max(6vw, 28px);
+  display: flex;
 }
 
 /* ---------- footer ---------- */
@@ -780,6 +1085,11 @@ footer a {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .steps,
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
   .hero {
     min-height: 600px;
   }
@@ -817,7 +1127,21 @@ footer a {
 
   .eventPromo {
     top: 48px;
-    right: -70px;
+    right: -30px;
+  }
+
+  .eventSticker {
+    padding: 9px 40px 8px 18px;
+    font-size: 13px;
+  }
+
+  .cta {
+    font-size: 12px;
+  }
+
+  .terminalLine > div {
+    flex-wrap: wrap;
+    gap: 2px 10px;
   }
 
   .eventPopover {

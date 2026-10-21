@@ -2,6 +2,8 @@ import type { Prize } from "@/lib/types";
 
 const school = "UIUC";
 
+export type ItineraryItem = { time: string; title: string; detail?: string };
+
 export const event = {
   name: "Disruption Lab × Replit Learnathon",
   shortName: `${school} Learnathon`,
@@ -17,8 +19,31 @@ export const event = {
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Campus+Instructional+Facility+University+of+Illinois+Urbana-Champaign",
   replitUrl: "https://replit.com",
-  /** Drop a logo at public/brand/disruption-lab.png (or .svg) and set the path here. */
+  /** Disruption Lab logo, e.g. "/brand/disruption-lab.svg". null shows a text wordmark. */
   disruptionLabLogo: null as string | null,
-  /** Fill in once prizes are announced, in display order (Grand Prize first). */
+
+  /** Google Form links. null = shows "opens soon". */
+  forms: {
+    /** Anyone curious. */
+    interest:
+      "https://docs.google.com/forms/d/e/1FAIpQLSdWY9JC-_ASYPv79J48chio_94pDRlufqLNRCZp-WDXFUINTQ/viewform" as
+        | string
+        | null,
+    /** Required to attend. */
+    pre: null as string | null,
+    /** Required to get your build on the wall. */
+    post: null as string | null,
+  },
+
+  /** e.g. { time: "12:00 PM", title: "Kickoff", detail: "Intro to Replit Agent" }. Empty = TBA. */
+  itinerary: [] as ItineraryItem[],
+
+  /** e.g. "Pizza + drinks". null = TBA. */
+  food: null as string | null,
+
+  /** In display order (Grand Prize first). Set a project's `award` to one of these names. Empty = TBA. */
   prizes: [] as Prize[],
 };
+
+/** The form the main "sign up" buttons should point at right now. */
+export const signupForm = event.forms.pre ?? event.forms.interest;
