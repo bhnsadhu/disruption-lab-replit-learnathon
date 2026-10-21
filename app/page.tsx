@@ -2,6 +2,7 @@ import { BrandLockup } from "@/components/BrandLockup";
 import { EventPromo } from "@/components/EventPromo";
 import { EventGuide } from "@/components/EventGuide";
 import { ProjectCard, SlotCard } from "@/components/ProjectCard";
+import { Reveal } from "@/components/Reveal";
 import { Terminal } from "@/components/Terminal";
 import { event, signupForm } from "@/data/event";
 import { projects } from "@/lib/projects";
@@ -18,6 +19,7 @@ export default function Home() {
 
   return (
     <main>
+      <Reveal />
       <div className="ticker" aria-hidden="true">
         <span>{TICKER}</span>
         <span>{TICKER}</span>

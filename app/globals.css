@@ -7,6 +7,8 @@
   --acid: #cf0;
   --blue: #4f7cff;
   --navy: #13294b; /* Illini blue */
+  /* one side margin for every section so left edges line up */
+  --gutter: max(5vw, 24px);
 }
 
 * {
@@ -70,7 +72,7 @@ main {
   flex-direction: column;
   justify-content: center;
   min-height: 670px;
-  padding: 68px max(6vw, 28px) 90px;
+  padding: 68px var(--gutter) 90px;
   display: flex;
   position: relative;
 }
@@ -530,6 +532,11 @@ h1 span {
 .cta b {
   color: var(--orange);
   font-size: 18px;
+  transition: translate 0.18s;
+}
+
+.cta:hover b {
+  translate: 3px -3px;
 }
 
 .cta:hover,
@@ -548,7 +555,7 @@ h1 span {
   display: flex;
   position: absolute;
   bottom: 38px;
-  right: max(6vw, 28px);
+  right: var(--gutter);
 }
 
 .jump span {
@@ -573,7 +580,7 @@ h1 span {
   background-image: linear-gradient(#17151217 1px, #0000 1px),
     linear-gradient(90deg, #17151217 1px, #0000 1px);
   background-size: 28px 28px;
-  padding: 64px max(5vw, 24px) 120px;
+  padding: 64px var(--gutter) 120px;
 }
 
 .wallHeader {
@@ -777,6 +784,7 @@ a.creator:hover {
 /* winner ribbon */
 .award {
   z-index: 3;
+  transition: transform 0.18s;
   color: var(--ink);
   background: var(--orange);
   letter-spacing: 0.06em;
@@ -788,6 +796,10 @@ a.creator:hover {
   top: -16px;
   left: -12px;
   transform: rotate(-4deg);
+}
+
+.card.winner:hover .award {
+  transform: rotate(-8deg) scale(1.06);
 }
 
 .card.winner {
@@ -860,7 +872,7 @@ a.creator:hover {
     linear-gradient(90deg, #ffffff0d 1px, #0000 1px);
   background-size: 28px 28px;
   border-bottom: 4px solid var(--ink);
-  padding: 64px max(5vw, 24px) 80px;
+  padding: 64px var(--gutter) 80px;
 }
 
 .guide .wallHeader {
@@ -878,7 +890,7 @@ a.creator:hover {
 }
 
 .infoGrid {
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-top: 42px;
 }
 
@@ -1103,7 +1115,7 @@ a.creator:hover {
   justify-content: center;
   align-items: flex-start;
   gap: 30px;
-  padding: 40px max(6vw, 28px);
+  padding: 40px var(--gutter);
   display: flex;
 }
 
@@ -1116,7 +1128,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   gap: 28px;
-  padding: 52px max(6vw, 28px);
+  padding: 52px var(--gutter);
   display: flex;
 }
 
@@ -1203,9 +1215,12 @@ footer a {
     padding-top: 124px;
   }
 
-  .brandWord,
-  .brandX {
+  .brandWord {
     font-size: 19px;
+  }
+
+  .brandX {
+    display: none;
   }
 
   .brandChip img {
@@ -1311,6 +1326,99 @@ footer a {
   footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+/* ---------- motion ---------- */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    translate: -40px 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    translate: 0 -60px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes bob {
+  50% {
+    translate: 0 5px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* hero loads in top to bottom */
+  .hero > :is(.brandLockup, .signalRow, h1, .heroCopy, .terminalLine, .ctaRow) {
+    animation: 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both rise;
+  }
+
+  .hero > .brandLockup {
+    animation-delay: 0.05s;
+  }
+
+  .hero > .signalRow {
+    animation-delay: 0.15s;
+  }
+
+  .hero > h1 {
+    animation-delay: 0.25s;
+  }
+
+  h1 span {
+    animation: 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.45s both slideIn;
+  }
+
+  .hero > .heroCopy {
+    animation-delay: 0.45s;
+  }
+
+  .hero > .terminalLine {
+    animation-delay: 0.55s;
+  }
+
+  .hero > .ctaRow {
+    animation-delay: 0.65s;
+  }
+
+  .eventPromo {
+    animation: 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.8s both drop;
+  }
+
+  .jump span {
+    animation: 2s ease-in-out 1.5s infinite bob;
+  }
+
+  /* everything below the hero rises in on scroll (Reveal.tsx adds .in) */
+  .reveal-ready :is(.wallHeader, .guideCard, .card, footer > *):not(.in) {
+    opacity: 0;
+  }
+
+  .reveal-ready :is(.wallHeader, .guideCard, .card, footer > *).in {
+    animation: 0.65s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both rise;
   }
 }
 
