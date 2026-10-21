@@ -14,7 +14,7 @@ export default function AppleIcon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#171512",
+          background: "#13294b", // Illini blue
         }}
       >
         <svg width="112" height="112" viewBox="0 0 24 24" fill="#ff5f05">
