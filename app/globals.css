@@ -439,7 +439,8 @@ h1 {
   letter-spacing: -0.065em;
   text-transform: uppercase;
   max-width: 1050px;
-  margin: 34px 0 14px;
+  /* -0.062em cancels Geist's left side-bearing so the ink lines up with the chips above */
+  margin: 34px 0 14px -0.062em;
   font-size: clamp(72px, 13vw, 184px);
   font-weight: 900;
   line-height: 0.85;

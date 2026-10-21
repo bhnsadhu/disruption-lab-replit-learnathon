@@ -35,7 +35,8 @@ export default async function OgImage() {
             display: "flex",
             background: "#ccff00",
             borderBottom: "6px solid #171512",
-            padding: "14px 48px",
+            // 62 not 64: Geist Mono's B has a 2px side-bearing
+            padding: "14px 64px 14px 62px",
             fontFamily: "Geist Mono",
             fontSize: 24,
             fontWeight: 700,
@@ -85,12 +86,14 @@ export default async function OgImage() {
               lineHeight: 0.85,
               letterSpacing: -10,
               marginTop: 40,
+              // cancel Geist's left side-bearing (0.062em) so the ink lines up with the chips
+              marginLeft: -9,
             }}
           >
             <span>BUILT WITH</span>
             <span style={{ color: "#f3eddf", textShadow: "8px 8px 0 #171512" }}>REPLIT</span>
           </div>
-          <div style={{ display: "flex", marginTop: "auto", fontSize: 32, fontWeight: 800 }}>
+          <div style={{ display: "flex", marginTop: "auto", marginLeft: -2, fontSize: 32, fontWeight: 800 }}>
             {count > 0
               ? `${count} live builds | ${event.school} | Nov 2026`
               : `Build day | Nov 7 2026 | CIF Monumental Steps, ${event.school}`}
