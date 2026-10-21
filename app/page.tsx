@@ -43,23 +43,26 @@ export default function Home() {
             Rep<span className="li">l</span>it
           </span>
         </h1>
-        <p className="heroCopy">
-          {live ? `${count} experiments. ${count} live builds.` : "One afternoon. Zero experience needed."}
-          <br />
-          One gloriously overclocked wall of ideas.
-        </p>
-        <Terminal builds={count} />
-        <div className="ctaRow">
-          {signupForm && (
-            <a className="cta" href={signupForm} target="_blank" rel="noreferrer">
-              <span>I&apos;M IN</span>
-              {event.forms.pre ? "REGISTER (REQUIRED TO ATTEND)" : "FILL OUT THE INTEREST FORM"}
-              <b>↗</b>
+        {/* heroStack is as wide as the hero line, so the terminal's edges match the text */}
+        <div className="heroStack">
+          <p className="heroCopy">
+            {live ? `${count} experiments. ${count} live builds.` : "One afternoon. Zero experience needed."}
+            <br />
+            One gloriously overclocked wall of ideas.
+          </p>
+          <Terminal builds={count} />
+          <div className="ctaRow">
+            {signupForm && (
+              <a className="cta" href={signupForm} target="_blank" rel="noreferrer">
+                <span>I&apos;M IN</span>
+                {event.forms.pre ? "REGISTER (REQUIRED TO ATTEND)" : "FILL OUT THE INTEREST FORM"}
+                <b>↗</b>
+              </a>
+            )}
+            <a className="ctaGhost" href="#guide">
+              EVENT GUIDE ↓
             </a>
-          )}
-          <a className="ctaGhost" href="#guide">
-            EVENT GUIDE ↓
-          </a>
+          </div>
         </div>
         <a className="jump" href="#projects">
           ENTER THE WALL <span>↓</span>
