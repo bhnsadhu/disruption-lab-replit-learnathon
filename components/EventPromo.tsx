@@ -48,7 +48,7 @@ export function EventPromo() {
             </dd>
             <dt>FOOD</dt>
             <dd>{event.food ?? "To be announced"}</dd>
-            <dt>PRIZES</dt>
+            <dt>AWARDS</dt>
             <dd>
               {prizes.length === 0
                 ? "To be announced"

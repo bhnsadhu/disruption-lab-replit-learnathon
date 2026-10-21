@@ -120,7 +120,7 @@ export function EventGuide() {
           ) : (
             <>
               <span className="tba">TBA</span>
-              <p>Winners get a 🏆 ribbon and the top spot on the wall.</p>
+              <p>Winners take home awards, plus a 🏆 ribbon and the top spot on the wall.</p>
             </>
           )}
         </article>
