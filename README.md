@@ -131,8 +131,8 @@ When the link is texted (iMessage, WhatsApp) or posted (Instagram bio, Discord, 
 | --- | --- |
 | [`app/opengraph-image.tsx`](app/opengraph-image.tsx) | The 1200×630 preview image. Before the event it shows "Free · No experience needed" and the date; after, the number of builds. |
 | [`app/layout.tsx`](app/layout.tsx) | The preview title and description. These also switch automatically once projects are added. |
-| [`app/icon.svg`](app/icon.svg) | Browser tab icon |
-| [`app/apple-icon.tsx`](app/apple-icon.tsx) | iPhone icon, used for Messages previews and home-screen shortcuts |
+| [`app/favicon.ico`](app/favicon.ico) | Browser tab icon (official Illinois Block I, from cdn.brand.illinois.edu) |
+| [`app/apple-icon.png`](app/apple-icon.png) | iPhone icon, used for Messages previews and home-screen shortcuts |
 
 Apps cache previews, so after changing them, test with a fresh link such as `https://learnathon.bhanusadhu.com/?v=2`, or use [opengraph.xyz](https://www.opengraph.xyz).
 
