@@ -93,6 +93,7 @@ main {
 }
 
 .brandChip {
+  max-width: 100%;
   background: var(--ink);
   color: var(--paper);
   border: 2px solid var(--ink);
@@ -366,9 +367,9 @@ main {
 /* ---------- headline ---------- */
 
 h1 {
-  letter-spacing: -0.09em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
-  max-width: 1050px;
+  max-width: 1400px;
   margin: 34px 0 14px;
   font-size: clamp(72px, 13vw, 184px);
   font-weight: 950;

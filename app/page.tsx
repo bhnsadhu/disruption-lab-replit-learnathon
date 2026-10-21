@@ -5,7 +5,7 @@ import { event } from "@/data/event";
 import { projects } from "@/lib/projects";
 
 const TICKER =
-  "BUILT TO LEARN ✦ BUILT TO SHARE ✦ BUILT WITH REPLIT ✦ BUILT AT UIUC ✦ DISRUPTION LAB × REPLIT ✦ ";
+  `BUILT TO LEARN ✦ BUILT TO SHARE ✦ BUILT WITH REPLIT ✦ BUILT AT ${event.school.toUpperCase()} ✦ DISRUPTION LAB × REPLIT ✦ `;
 
 const EMPTY_SLOTS = 6;
 
@@ -39,7 +39,7 @@ export default function Home() {
             : "Every build from Nov 7 lands here. One gloriously overclocked wall of ideas, loading."}
         </p>
         <div className="terminalLine">
-          <b>~/uiuc/learnathon</b>
+          <b>~/illinois/learnathon</b>
           <span>$ ship imagination --to=internet</span>
           <em>▮</em>
         </div>

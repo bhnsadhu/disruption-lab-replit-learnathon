@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { event } from "@/data/event";
 import { projects } from "@/lib/projects";
 import "./globals.css";
 
-const title = "Built with Replit — UIUC Learnathon Wall";
+const title = `Built with Replit — ${event.school} Learnathon Wall`;
 const description =
   projects.length > 0
-    ? `${projects.length} live projects built at the Disruption Lab × Replit Learnathon at UIUC.`
-    : "Every project built at the Disruption Lab × Replit Learnathon at UIUC, Nov 7 2026.";
+    ? `${projects.length} live projects built at the Disruption Lab × Replit Learnathon at ${event.school}.`
+    : `Every project built at the Disruption Lab × Replit Learnathon at ${event.school}, Nov 7 2026.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://learnathon.bhanusadhu.com"),
