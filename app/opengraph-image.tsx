@@ -45,19 +45,36 @@ export default async function OgImage() {
           BUILT TO LEARN // BUILT TO SHARE // BUILT WITH REPLIT
         </div>
         <div style={{ display: "flex", flexDirection: "column", padding: "48px 64px", flex: 1 }}>
-          <div
-            style={{
-              display: "flex",
-              alignSelf: "flex-start",
-              background: "#171512",
-              color: "#f3eddf",
-              padding: "10px 18px",
-              fontFamily: "Geist Mono",
-              fontSize: 26,
-              fontWeight: 700,
-            }}
-          >
-            DISRUPTION LAB × REPLIT LEARNATHON
+          <div style={{ display: "flex", gap: 16 }}>
+            <div
+              style={{
+                display: "flex",
+                background: "#171512",
+                color: "#f3eddf",
+                padding: "10px 18px",
+                fontFamily: "Geist Mono",
+                fontSize: 26,
+                fontWeight: 700,
+              }}
+            >
+              DISRUPTION LAB × REPLIT LEARNATHON
+            </div>
+            {count === 0 && (
+              <div
+                style={{
+                  display: "flex",
+                  background: "#ccff00",
+                  color: "#171512",
+                  border: "3px solid #171512",
+                  padding: "7px 16px",
+                  fontFamily: "Geist Mono",
+                  fontSize: 26,
+                  fontWeight: 700,
+                }}
+              >
+                FREE · NO EXPERIENCE NEEDED
+              </div>
+            )}
           </div>
           <div
             style={{

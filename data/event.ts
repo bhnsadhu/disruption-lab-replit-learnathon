@@ -5,6 +5,8 @@ const school = "UIUC";
 export type ItineraryItem = { time: string; title: string; detail?: string };
 
 export const event = {
+  /** Live URL. Change this when the site moves to a new domain (link previews + calendar use it). */
+  siteUrl: "https://learnathon.bhanusadhu.com",
   name: "Disruption Lab × Replit Learnathon",
   shortName: `${school} Learnathon`,
   host: `Disruption Lab @ ${school}`,
