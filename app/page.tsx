@@ -34,8 +34,14 @@ export default function Home() {
           </a>
         </div>
         <EventPromo />
-        <h1>
-          Built with <span>Replit</span>
+        {/* .fuse pulls the next letter in so I+L, T+H and L+I read as one shape */}
+        <h1 aria-label="Built with Replit">
+          <span aria-hidden="true">
+            Bu<span className="fuse">i</span>lt wi<span className="fuse">t</span>h{" "}
+            <span className="accent">
+              Rep<span className="fuse">l</span>it
+            </span>
+          </span>
         </h1>
         <p className="heroCopy">
           {live
