@@ -463,7 +463,8 @@ h1 .accent {
 }
 
 .heroCopy {
-  max-width: 650px;
+  /* two lines on desktop: the <br> sets the break, so no max-width wrapping */
+  max-width: none;
   margin: 30px 0;
   font-size: clamp(21px, 2.5vw, 32px);
   font-weight: 800;
@@ -1328,8 +1329,9 @@ footer a {
     transform: none;
   }
 
+  /* scales with the screen so it stays on two lines on phones too */
   .heroCopy {
-    max-width: 92%;
+    font-size: 4.3vw;
   }
 
   .jump {
