@@ -29,6 +29,8 @@ export const event = {
     instagram: "https://www.instagram.com/uiuc_disruption",
     instagramHandle: "@uiuc_disruption",
     linkedin: "https://www.linkedin.com/company/disruption-lab-at-gies/",
+    /** This site's source code */
+    repo: "https://github.com/bhnsadhu/disruption-lab-replit-learnathon",
   },
 
   faq: [

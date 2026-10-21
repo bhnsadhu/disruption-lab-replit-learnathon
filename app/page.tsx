@@ -106,6 +106,9 @@ export default function Home() {
             <a href={event.links.website} target="_blank" rel="noreferrer">
               DISRUPTION LAB ↗
             </a>
+            <a href={event.links.repo} target="_blank" rel="noreferrer">
+              SOURCE CODE ↗
+            </a>
           </nav>
         </div>
         <a href="#">BACK TO TOP ↑</a>
