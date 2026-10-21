@@ -34,8 +34,14 @@ export default function Home() {
           </a>
         </div>
         <EventPromo />
-        <h1>
-          Built with <span>Replit</span>
+        {/* .il / .li close Geist's side-bearings so I+L and L+I touch (see globals.css) */}
+        <h1 aria-label="Built with Replit">
+          <span aria-hidden="true" className="h1Line">
+            Bu<span className="il">i</span>lt with
+          </span>
+          <span aria-hidden="true" className="accent">
+            Rep<span className="li">l</span>it
+          </span>
         </h1>
         <p className="heroCopy">
           {live
