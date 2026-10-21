@@ -39,7 +39,7 @@ export default function Home() {
             : "Every build from Nov 7 lands here. One gloriously overclocked wall of ideas, loading."}
         </p>
         <div className="terminalLine">
-          <b>~/illinois/learnathon</b>
+          <b>~/uiuc/learnathon</b>
           <span>$ ship imagination --to=internet</span>
           <em>▮</em>
         </div>

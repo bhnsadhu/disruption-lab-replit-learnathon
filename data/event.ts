@@ -1,6 +1,6 @@
 import type { Prize } from "@/lib/types";
 
-const school = "University of Illinois Urbana-Champaign";
+const school = "UIUC";
 
 export const event = {
   name: "Disruption Lab × Replit Learnathon",

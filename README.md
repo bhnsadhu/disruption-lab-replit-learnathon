@@ -1,4 +1,4 @@
-# Built with Replit — University of Illinois Urbana-Champaign Learnathon Wall
+# Built with Replit — UIUC Learnathon Wall
 
 Project wall for the **Disruption Lab × Replit Learnathon** (Sat, Nov 7 2026 · 12:00–2:45 PM · CIF Monumental Steps).
 Live at **learnathon.bhanusadhu.com**.
