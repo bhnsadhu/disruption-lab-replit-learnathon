@@ -1,7 +1,7 @@
 # Built with Replit — UIUC Learnathon Wall
 
 Project wall for the **Disruption Lab × Replit Learnathon** (Sat, Nov 7 2026 · 12:00–2:45 PM · CIF Monumental Steps).
-Live at **bhanu.uiuclearnathon.com**.
+Live at **learnathon.bhanusadhu.com**.
 
 Until projects are added, the wall shows six "your build here" slots. Once `data/projects.json` has entries, it switches to the real cards automatically.
 
