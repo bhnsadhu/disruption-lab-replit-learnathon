@@ -15,9 +15,12 @@ The website for the **Disruption Lab × Replit Learnathon**, a free, no experien
 
 ## At a glance
 
+* **A product for a real event.** It has two audiences, students deciding whether to show up and the organizers running the day, and one job in each phase: get people to sign up, then show off what they shipped. It follows a funnel (interest → pre-event → post-event), and the post-event form is what gets an app onto the wall.
 * **One site, two phases.** Pre-event it shows a countdown, three sign-up steps and an FAQ. Post-event the same page turns into a project wall with a screenshot, a one-liner, a live link and the builder's name and LinkedIn for each app. The headline copy, link preview and footer switch on their own once projects exist.
-* **Run from one file.** Dates, forms, schedule, food, prizes and FAQ all live in [`data/event.ts`](data/event.ts). Leave a value empty and the site shows "TBA" or "opens soon" in its place. No CMS and no database.
-* **From form response to wall in two commands.** A Google Form CSV becomes `data/projects.json`, and every published Replit app is screenshotted automatically with your installed Chrome. Resubmissions, awards and existing screenshots are handled safely on re-run.
+* **Built to be run by non-engineers.** Dates, forms, schedule, food, prizes and FAQ all live in [`data/event.ts`](data/event.ts). Leave a value empty and the site shows "TBA" or "opens soon" in its place. No CMS and no database.
+* **Real engineering underneath.** A Google Form CSV becomes the wall in two commands: a dependency-free CSV parser, header matching that tolerates reworded questions, idempotent re-imports, and a Chrome screenshot pass that detects unpublished apps. Calendar invites, the link-preview image and the `.ics` file are generated from the same event data.
+
+Written in TypeScript on Next.js 16, deployed on Vercel from `main`.
 
 ## What is on the site
 
@@ -59,6 +62,26 @@ flowchart LR
 ```
 
 Event info and projects are plain files read at build time, so every change is a git commit and the live site is just `main`. The home page switches between its pre-event and post-event copy based on whether `data/projects.json` has any entries, and the project sort ([`lib/projects.ts`](lib/projects.ts)) puts winners first in prize order.
+
+## Product decisions
+
+* **Three forms, in order, with one required at each gate.** The interest form is open to anyone, the pre-event form is required to attend, and the post-event form is required to get on the wall. Each step stays "opens soon" until its link exists, and the main hero button always points at the furthest-along form (pre-event once it exists, interest until then).
+* **The wall is the incentive.** Submitting a published Replit app is the only way onto it, which gives people a reason to finish and publish rather than stop at a half-built prototype. Winners get a 🏆 ribbon and move to the top.
+* **Nothing to fill in by hand.** The form asks for a name, project name, one line, a `.replit.app` link, and optionally LinkedIn and a headshot. It does not ask for screenshots, because those are captured from the link.
+* **Honest empty states.** Unannounced details show "TBA" or "opens soon" rather than invented placeholders, and the wall shows six reserved "your build here" slots that link to sign-up, so the page works as a call to action before any app exists.
+* **The link is the marketing channel.** It gets texted and posted in bios, so the preview card is a product surface: pre-event it says "Free · No experience needed" and the date, post-event it shows the build count.
+* **Accessible by default.** Scroll and load-in animations switch off for anyone with reduced motion enabled.
+
+## Engineering
+
+* **Static by design.** Event info and projects are typed files read at build time. There is no database, no API and no runtime server logic, so there is nothing to scale or secure on build day, and every content change is a reviewable git commit.
+* **One source of truth.** The page, the preview image, the page metadata, the Google Calendar link and the `.ics` file all read [`data/event.ts`](data/event.ts), so a changed date or location cannot go out of sync across them.
+* **A countdown that survives server rendering.** [`components/Terminal.tsx`](components/Terminal.tsx) renders a fixed placeholder on the server and starts ticking after mount, so there is no hydration mismatch. It moves through before, during and after states against the event's CST timestamps.
+* **Standards-compliant calendar file.** [`lib/calendar.ts`](lib/calendar.ts) builds the `.ics` itself: UTC conversion of the CST start and end, RFC 5545 text escaping, and 75-octet line folding that counts bytes, not characters, so non-ASCII text cannot split mid-character. It is served from a statically generated route.
+* **A form importer that tolerates edits.** [`scripts/import-form.mjs`](scripts/import-form.mjs) has its own RFC 4180 CSV parser (quoted fields, escaped quotes, newlines inside quotes, BOM stripping). Columns are matched by keyword, so rewording a question does not break the import, and a missing required column fails loudly with the headers it saw.
+* **Safe to re-run.** Slugs come from the project title, a later submission replaces an earlier one, and existing screenshots, avatars and awards carry over. Incomplete rows are skipped and reported, never silently dropped.
+* **A screenshot pass that reports what it could not do.** [`scripts/screenshots.mjs`](scripts/screenshots.mjs) drives the installed Chrome through `playwright-core`, allows for Replit cold starts, recognizes Replit's "this app isn't live yet" page, and ends with two lists: apps to ask to hit Publish, and slugs to retry.
+* **Typed end to end.** Strict TypeScript, with the project and prize shapes in [`lib/types.ts`](lib/types.ts).
 
 ## Updating event info
 
