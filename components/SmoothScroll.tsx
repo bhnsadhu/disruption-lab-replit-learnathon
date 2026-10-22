@@ -9,7 +9,10 @@ export function SmoothScroll() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const lenis = new Lenis({ autoRaf: true });
+    // a touch tighter than the default 0.1 so the wheel doesn't feel floaty
+    const lenis = new Lenis({ autoRaf: true, lerp: 0.12 });
+    // fast start, soft landing, like the reveal curve in globals.css
+    const jump = { duration: 0.9, easing: (t: number) => 1 - (1 - t) ** 4 };
 
     // Lenis's own `anchors` option doesn't cancel the native jump, so the two fight; take in-page links over here
     const onClick = (e: MouseEvent) => {
@@ -18,7 +21,7 @@ export function SmoothScroll() {
       if (!a) return;
       const hash = a.getAttribute("href")!;
       e.preventDefault();
-      lenis.scrollTo(hash === "#" ? 0 : hash);
+      lenis.scrollTo(hash === "#" ? 0 : hash, jump);
       history.pushState(null, "", hash === "#" ? location.pathname + location.search : hash);
     };
     document.addEventListener("click", onClick);
