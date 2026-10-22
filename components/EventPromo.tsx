@@ -23,7 +23,7 @@ export function EventPromo() {
           <i aria-hidden="true">▾</i> {open ? "CLICK TO CLOSE" : "CLICK FOR DETAILS"}
         </small>
       </button>
-      <div className="eventPopover" role="dialog" aria-label={`${event.name} details`}>
+      <div className="eventPopover" role="dialog" data-lenis-prevent aria-label={`${event.name} details`}>
         <div className="eventInfo">
           <span className="eventPill">LEARNATHON</span>
           <strong>{event.name}</strong>
