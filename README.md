@@ -200,4 +200,4 @@ The screenshot script needs Google Chrome installed; it does not download a brow
 
 ## Credits
 
-Built for [Disruption Lab @ UIUC](https://giesgroups.illinois.edu/disruptionlab/home/) and Replit. Design is adapted from the [Built with Replit cohort wall](https://built-with-replit-wall.aishgrt.chatgpt.site/) and recolored for Illinois.
+Built for [Disruption Lab @ UIUC](https://giesgroups.illinois.edu/disruptionlab/home/) and Replit.
